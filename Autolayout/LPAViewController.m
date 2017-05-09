@@ -53,6 +53,32 @@
     [self.view addSubview:framingView];
     self.framingView = framingView;
     
+    UIView *purpleRect = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
+    purpleRect.translatesAutoresizingMaskIntoConstraints = NO;
+    purpleRect.backgroundColor = [UIColor purpleColor];
+    [self.framingView addSubview:purpleRect];
+
+    UIView *blueSquare = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 150.0, 50.0)];
+    blueSquare.translatesAutoresizingMaskIntoConstraints = NO;
+    blueSquare.backgroundColor = [UIColor blueColor];
+    [self.framingView addSubview:blueSquare];
+    
+    UIView *orangeRect1 = [[UIView alloc]initWithFrame:CGRectZero];
+    orangeRect1.translatesAutoresizingMaskIntoConstraints = NO;
+    orangeRect1.backgroundColor = [UIColor orangeColor];
+
+    UIView *orangeRect2 = [[UIView alloc]initWithFrame:CGRectZero];
+    orangeRect2.translatesAutoresizingMaskIntoConstraints = NO;
+    orangeRect2.backgroundColor = [UIColor orangeColor];
+
+    UIView *redRect = [[UIView alloc]initWithFrame:CGRectZero];
+    redRect.translatesAutoresizingMaskIntoConstraints = NO;
+    redRect.backgroundColor = [UIColor redColor];
+    [self.framingView addSubview:redRect];
+    [redRect addSubview:orangeRect1];
+    [redRect addSubview:orangeRect2];
+
+    
     NSString *buttonsHorizontalConstraintsFormat = @"|[squareButton(==portraitButton)][portraitButton(==landscapeButton)][landscapeButton]|";
     NSArray *buttonsHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:buttonsHorizontalConstraintsFormat
                                                                    options:NSLayoutFormatAlignAllCenterY
@@ -106,12 +132,8 @@
     self.framingViewWidthConstraint.active = YES;
 
     
-#pragma mark - UIView Setup
+#pragma mark - PurpleRectViewConstraints
     
-    UIView *purpleRect = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
-    purpleRect.translatesAutoresizingMaskIntoConstraints = NO;
-    purpleRect.backgroundColor = [UIColor purpleColor];
-    [self.framingView addSubview:purpleRect];
     
     NSLayoutConstraint *purpleRectRightMarginConstraint = [NSLayoutConstraint constraintWithItem:purpleRect
                                                                                        attribute:NSLayoutAttributeRightMargin
@@ -155,11 +177,9 @@
 
     purpleRectHeightConstraint.active = YES;
  
-    return;
-    UIView *blueSquare = [[UIView alloc]initWithFrame:CGRectZero];
-    blueSquare.translatesAutoresizingMaskIntoConstraints = NO;
-    blueSquare.backgroundColor = [UIColor blueColor];
-    [self.view addSubview:blueSquare];
+#pragma mark - BlueSquareViewConstraints
+    
+    
     
     NSLayoutConstraint *blueSquareRightMarginConstraint = [NSLayoutConstraint constraintWithItem:blueSquare
                                                                                        attribute:NSLayoutAttributeRightMargin
@@ -181,32 +201,140 @@
     
     
     blueSquareBottomMarginConstraint.active = YES;
+
+#pragma mark - OrangeRectViewConstraints
     
-    NSLayoutConstraint *blueSquareWidthConstraint = [NSLayoutConstraint constraintWithItem:blueSquare
-                                                                                 attribute:NSLayoutAttributeWidth
-                                                                                 relatedBy:NSLayoutRelationEqual
-                                                                                    toItem:self.framingView
-                                                                                 attribute:NSLayoutAttributeWidth
-                                                                                multiplier:(305.0/500.0)
-                                                                                  constant:0];
+   
+    NSLayoutConstraint *orangeRect1TopMarginConstraint = [NSLayoutConstraint constraintWithItem:orangeRect1
+                                                                                      attribute:NSLayoutAttributeTopMargin
+                                                                                      relatedBy:NSLayoutRelationEqual
+                                                                                         toItem:redRect
+                                                                                      attribute:NSLayoutAttributeTopMargin
+                                                                                     multiplier:1.0
+                                                                                       constant:5.0];
+    orangeRect1TopMarginConstraint.active = YES;
     
-    blueSquareWidthConstraint.active = YES;
+    NSLayoutConstraint *orangeRect1RightMarginConstraint = [NSLayoutConstraint constraintWithItem:orangeRect1
+                                                                                        attribute:NSLayoutAttributeRightMargin
+                                                                                        relatedBy:NSLayoutRelationEqual
+                                                                                           toItem:redRect
+                                                                                        attribute:NSLayoutAttributeRightMargin
+                                                                                       multiplier:1.0
+                                                                                         constant:-5.0];
+    orangeRect1RightMarginConstraint.active = YES;
     
+    NSLayoutConstraint *orangeRect1BottomLayoutConstraint = [NSLayoutConstraint constraintWithItem:orangeRect1
+                                                                                         attribute:NSLayoutAttributeBottomMargin
+                                                                                         relatedBy:NSLayoutRelationEqual
+                                                                                            toItem:redRect
+                                                                                         attribute:NSLayoutAttributeBottomMargin
+                                                                                        multiplier:1.0
+                                                                                          constant:-5.0];
+    orangeRect1BottomLayoutConstraint.active = YES;
     
-    NSLayoutConstraint *blueSquareHeightConstraint = [NSLayoutConstraint constraintWithItem:blueSquare
-                                                                                  attribute:NSLayoutAttributeHeight
+    NSLayoutConstraint *orangeRect1HeightConstraint = [NSLayoutConstraint constraintWithItem:orangeRect1
+                                                                                   attribute:NSLayoutAttributeHeight
+                                                                                   relatedBy:NSLayoutRelationEqual
+                                                                                      toItem:nil
+                                                                                   attribute:NSLayoutAttributeNotAnAttribute
+                                                                                  multiplier:1.0
+                                                                                    constant:30.0];
+    orangeRect1HeightConstraint.active = YES;
+    
+    NSLayoutConstraint *orangeRect1Widthconstraint = [NSLayoutConstraint constraintWithItem:orangeRect1
+                                                                                  attribute:NSLayoutAttributeWidth
                                                                                   relatedBy:NSLayoutRelationEqual
                                                                                      toItem:nil
                                                                                   attribute:NSLayoutAttributeNotAnAttribute
                                                                                  multiplier:1.0
                                                                                    constant:50.0];
+    orangeRect1Widthconstraint.active = YES;
     
-    blueSquareHeightConstraint.active = YES;
     
-    UIView *orangeRect = [[UIView alloc]initWithFrame:CGRectZero];
-    orangeRect.translatesAutoresizingMaskIntoConstraints = NO;
-    orangeRect.backgroundColor = [UIColor orangeColor];
-    [self.view addSubview:orangeRect];
+    
+    NSLayoutConstraint *orangeRect2LeftMarginConstraint = [NSLayoutConstraint constraintWithItem:orangeRect2
+                                                                                       attribute:NSLayoutAttributeLeftMargin
+                                                                                       relatedBy:NSLayoutRelationEqual
+                                                                                          toItem:redRect
+                                                                                       attribute:NSLayoutAttributeLeftMargin
+                                                                                      multiplier:1.0
+                                                                                        constant:5.0];
+    orangeRect2LeftMarginConstraint.active = YES;
+    
+    NSLayoutConstraint *orangeRect2VerticalCenteringConstraint = [NSLayoutConstraint constraintWithItem:orangeRect2
+                                                                                              attribute:NSLayoutAttributeCenterY
+                                                                                              relatedBy:NSLayoutRelationEqual
+                                                                                                 toItem:orangeRect1
+                                                                                              attribute:NSLayoutAttributeCenterY
+                                                                                             multiplier:1.0
+                                                                                               constant:0.0];
+    orangeRect2VerticalCenteringConstraint.active = YES;
+    
+    NSLayoutConstraint *orangeRect2HeightConstraint = [NSLayoutConstraint constraintWithItem:orangeRect2
+                                                                                   attribute:NSLayoutAttributeHeight
+                                                                                   relatedBy:NSLayoutRelationEqual
+                                                                                      toItem:nil
+                                                                                   attribute:NSLayoutAttributeNotAnAttribute
+                                                                                  multiplier:1.0
+                                                                                    constant:30.0];
+    orangeRect2HeightConstraint.active = YES;
+    
+    NSLayoutConstraint *orangeRect2Widthconstraint = [NSLayoutConstraint constraintWithItem:orangeRect2
+                                                                                  attribute:NSLayoutAttributeWidth
+                                                                                  relatedBy:NSLayoutRelationEqual
+                                                                                     toItem:nil
+                                                                                  attribute:NSLayoutAttributeNotAnAttribute
+                                                                                 multiplier:1.0
+                                                                                   constant:70.0];
+    orangeRect2Widthconstraint.active = YES;
+    
+
+    
+    
+    
+    #pragma mark - RedRectViewConstraints
+    
+    
+    NSLayoutConstraint *redRectTopMarginConstraint = [NSLayoutConstraint constraintWithItem:redRect
+                                                                                  attribute:NSLayoutAttributeTopMargin
+                                                                                  relatedBy:NSLayoutRelationEqual
+                                                                                     toItem:self.framingView
+                                                                                  attribute:NSLayoutAttributeTopMargin
+                                                                                 multiplier:1.0
+                                                                                   constant:20.0];
+    redRectTopMarginConstraint.active = YES;
+    
+    
+    NSLayoutConstraint *redRectRightMarginConstraint = [NSLayoutConstraint constraintWithItem:redRect
+                                                                                    attribute:NSLayoutAttributeRightMargin
+                                                                                    relatedBy:NSLayoutRelationEqual
+                                                                                       toItem:self.framingView
+                                                                                    attribute:NSLayoutAttributeRightMargin
+                                                                                   multiplier:1.0
+                                                                                     constant:-20.0];
+    redRectRightMarginConstraint.active = YES;
+    
+    
+    
+    
+    NSLayoutConstraint *redRectWidthConstraint = [NSLayoutConstraint constraintWithItem:redRect
+                                                                              attribute:NSLayoutAttributeWidth
+                                                                              relatedBy:NSLayoutRelationEqual
+                                                                                 toItem:nil
+                                                                              attribute:NSLayoutAttributeNotAnAttribute
+                                                                             multiplier:1.0
+                                                                               constant:(5.0*3.0) + 70.0 + 50.0];
+    redRectWidthConstraint.active = YES;
+    
+   NSLayoutConstraint *redRectHeightConstraint = [NSLayoutConstraint constraintWithItem:redRect
+                                                                              attribute:NSLayoutAttributeHeight
+                                                                              relatedBy:NSLayoutRelationEqual
+                                                                                 toItem:nil
+                                                                              attribute:NSLayoutAttributeNotAnAttribute
+                                                                             multiplier:1.0
+                                                                               constant:(5.0*2.0) + 30.0];
+    redRectHeightConstraint.active = YES;
+
     
 }
 
