@@ -58,10 +58,21 @@
     purpleRect.backgroundColor = [UIColor purpleColor];
     [self.framingView addSubview:purpleRect];
 
-    UIView *blueSquare = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 150.0, 50.0)];
-    blueSquare.translatesAutoresizingMaskIntoConstraints = NO;
-    blueSquare.backgroundColor = [UIColor blueColor];
-    [self.framingView addSubview:blueSquare];
+    UIView *blueSquare1 = [[UIView alloc]initWithFrame:CGRectZero];
+    blueSquare1.translatesAutoresizingMaskIntoConstraints = NO;
+    blueSquare1.backgroundColor = [UIColor blueColor];
+    [self.framingView addSubview:blueSquare1];
+    
+    UIView *blueSquare2 = [[UIView alloc]initWithFrame:CGRectZero];
+    blueSquare2.translatesAutoresizingMaskIntoConstraints = NO;
+    blueSquare2.backgroundColor = [UIColor blueColor];
+    [self.framingView addSubview:blueSquare2];
+    
+    UIView *blueSquare3 = [[UIView alloc]initWithFrame:CGRectZero];
+    blueSquare3.translatesAutoresizingMaskIntoConstraints = NO;
+    blueSquare3.backgroundColor = [UIColor blueColor];
+    [self.framingView addSubview:blueSquare3];
+    
     
     UIView *orangeRect1 = [[UIView alloc]initWithFrame:CGRectZero];
     orangeRect1.translatesAutoresizingMaskIntoConstraints = NO;
@@ -179,29 +190,106 @@
  
 #pragma mark - BlueSquareViewConstraints
     
-    
-    
-    NSLayoutConstraint *blueSquareRightMarginConstraint = [NSLayoutConstraint constraintWithItem:blueSquare
-                                                                                       attribute:NSLayoutAttributeRightMargin
-                                                                                       relatedBy:NSLayoutRelationEqual
-                                                                                          toItem:self.framingView
-                                                                                       attribute:NSLayoutAttributeRightMargin
-                                                                                      multiplier:1.0
-                                                                                        constant:-20.0];
-    
-    blueSquareRightMarginConstraint.active = YES;
-    
-    NSLayoutConstraint *blueSquareBottomMarginConstraint = [NSLayoutConstraint constraintWithItem:blueSquare
-                                                                                        attribute:NSLayoutAttributeBottomMargin
-                                                                                        relatedBy:NSLayoutRelationEqual
-                                                                                           toItem:self.framingView
-                                                                                        attribute:NSLayoutAttributeBottomMargin
-                                                                                       multiplier:1.0
-                                                                                         constant:-20.0];
-    
-    
-    blueSquareBottomMarginConstraint.active = YES;
+    NSLayoutConstraint *blueSquare1CenterYConstraint = [NSLayoutConstraint constraintWithItem:blueSquare1
+                                                                                  attribute:NSLayoutAttributeCenterY
+                                                                                  relatedBy:NSLayoutRelationEqual
+                                                                                     toItem:self.framingView
+                                                                                  attribute:NSLayoutAttributeCenterY
+                                                                                 multiplier:0.5 constant: 0];
+    blueSquare1CenterYConstraint.active = YES;
 
+    NSLayoutConstraint *blueSquare1CenterXConstraint = [NSLayoutConstraint constraintWithItem:blueSquare1
+                                                                                    attribute:NSLayoutAttributeCenterX
+                                                                                    relatedBy:NSLayoutRelationEqual
+                                                                                       toItem:self.framingView
+                                                                                    attribute:NSLayoutAttributeCenterX
+                                                                                   multiplier:1.0
+                                                                                     constant:0];
+    blueSquare1CenterXConstraint.active = YES;
+    NSLayoutConstraint *blueSquare1WidthConstraint = [NSLayoutConstraint constraintWithItem:blueSquare1
+                                                                                  attribute:NSLayoutAttributeWidth
+                                                                                  relatedBy:NSLayoutRelationEqual
+                                                                                     toItem:nil
+                                                                                  attribute:NSLayoutAttributeNotAnAttribute
+                                                                                 multiplier:1.0 constant:50.0];
+    blueSquare1WidthConstraint.active = YES;
+    NSLayoutConstraint *blueSquare1HeightConstraint = [NSLayoutConstraint constraintWithItem:blueSquare1
+                                                                                   attribute:NSLayoutAttributeHeight
+                                                                                   relatedBy:NSLayoutRelationEqual
+                                                                                      toItem:nil attribute:NSLayoutAttributeNotAnAttribute
+                                                                                  multiplier:1.0
+                                                                                    constant:50];
+    blueSquare1HeightConstraint.active = YES;
+    
+    NSLayoutConstraint *blueSquare2CenterYConstraint = [NSLayoutConstraint constraintWithItem:blueSquare2
+                                                                                    attribute:NSLayoutAttributeCenterY
+                                                                                    relatedBy:NSLayoutRelationEqual
+                                                                                       toItem:self.framingView
+                                                                                    attribute:NSLayoutAttributeCenterY
+                                                                                   multiplier:1.0 constant:(self.framingView.frame.size.height/2)];
+    blueSquare2CenterYConstraint.active = YES;
+    
+    NSLayoutConstraint *blueSquare2CenterXConstraint = [NSLayoutConstraint constraintWithItem:blueSquare2
+                                                                                    attribute:NSLayoutAttributeCenterX
+                                                                                    relatedBy:NSLayoutRelationEqual
+                                                                                       toItem:self.framingView
+                                                                                    attribute:NSLayoutAttributeCenterX
+                                                                                   multiplier:1.0
+                                                                                     constant:0];
+    blueSquare2CenterXConstraint.active = YES;
+
+    NSLayoutConstraint *blueSquare2WidthConstraint = [NSLayoutConstraint constraintWithItem:blueSquare2
+                                                                                  attribute:NSLayoutAttributeWidth
+                                                                                  relatedBy:NSLayoutRelationEqual
+                                                                                     toItem:nil
+                                                                                  attribute:NSLayoutAttributeNotAnAttribute
+                                                                                 multiplier:1.0 constant:50.0];
+    blueSquare2WidthConstraint.active = YES;
+
+    NSLayoutConstraint *blueSquare2HeightConstraint = [NSLayoutConstraint constraintWithItem:blueSquare2
+                                                                                   attribute:NSLayoutAttributeHeight
+                                                                                   relatedBy:NSLayoutRelationEqual
+                                                                                      toItem:nil attribute:NSLayoutAttributeNotAnAttribute
+                                                                                  multiplier:1.0
+                                                                                    constant:50];
+    blueSquare2HeightConstraint.active = YES;
+
+    
+    NSLayoutConstraint *blueSquare3CenterYConstraint = [NSLayoutConstraint constraintWithItem:blueSquare3
+                                                                                    attribute:NSLayoutAttributeCenterY
+                                                                                    relatedBy:NSLayoutRelationEqual
+                                                                                       toItem:self.framingView
+                                                                                    attribute:NSLayoutAttributeCenterY
+                                                                                   multiplier:1.5
+                                                                                     constant:0];
+    blueSquare3CenterYConstraint.active = YES;
+
+    NSLayoutConstraint *blueSquare3CenterXConstraint = [NSLayoutConstraint constraintWithItem:blueSquare3
+                                                                                    attribute:NSLayoutAttributeCenterX
+                                                                                    relatedBy:NSLayoutRelationEqual
+                                                                                       toItem:self.framingView
+                                                                                    attribute:NSLayoutAttributeCenterX
+                                                                                   multiplier:1.0
+                                                                                     constant:0];
+    blueSquare3CenterXConstraint.active = YES;
+
+    NSLayoutConstraint *blueSquare3WidthConstraint = [NSLayoutConstraint constraintWithItem:blueSquare3
+                                                                                  attribute:NSLayoutAttributeWidth
+                                                                                  relatedBy:NSLayoutRelationEqual
+                                                                                     toItem:nil
+                                                                                  attribute:NSLayoutAttributeNotAnAttribute
+                                                                                 multiplier:1.0 constant:50.0];
+    blueSquare3WidthConstraint.active = YES;
+
+    NSLayoutConstraint *blueSquare3HeightConstraint = [NSLayoutConstraint constraintWithItem:blueSquare3
+                                                                                   attribute:NSLayoutAttributeHeight
+                                                                                   relatedBy:NSLayoutRelationEqual
+                                                                                      toItem:nil attribute:NSLayoutAttributeNotAnAttribute
+                                                                                  multiplier:1.0
+                                                                                    constant:50];
+    blueSquare3HeightConstraint.active = YES;
+
+    
 #pragma mark - OrangeRectViewConstraints
     
    
