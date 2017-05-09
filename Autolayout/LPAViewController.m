@@ -53,6 +53,7 @@
     [self.view addSubview:framingView];
     self.framingView = framingView;
     
+    
     UIView *purpleRect = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
     purpleRect.translatesAutoresizingMaskIntoConstraints = NO;
     purpleRect.backgroundColor = [UIColor purpleColor];
@@ -72,6 +73,7 @@
     blueSquare3.translatesAutoresizingMaskIntoConstraints = NO;
     blueSquare3.backgroundColor = [UIColor blueColor];
     [self.framingView addSubview:blueSquare3];
+    [self.framingView bringSubviewToFront:blueSquare3];
     
     
     UIView *orangeRect1 = [[UIView alloc]initWithFrame:CGRectZero];
